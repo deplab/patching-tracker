@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Lifecycle & Security Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="manifest" href="/images/site.webmanifest">
+</head>
+<body>
+
+<div id="progress" class="progress-bar"></div>
+
+<div class="container">
+    <header>
+        <div>
+            <h1>Patching Tracker</h1>
+            <p class="sub-header">Software lifecycle maintenance and multi-source vulnerability intelligence</p>
+        </div>
+        <div id="itemCount" class="badge badge-info">Initializing Dashboard...</div>
+    </header>
+
+    <div class="filter-bar">
+        <input type="text" id="toolSearch" class="search-input" placeholder="Search product or version..." onkeyup="applyFilters()">
+
+        <select id="categoryFilter" class="filter-select" onchange="applyFilters()">
+            <option value="all">All Categories</option>
+        </select>
+
+        <select id="maintenanceFilter" class="filter-select" onchange="applyFilters()">
+            <option value="all">All Maintenance</option>
+            <option value="eol">No Longer Maintained (EOL)</option>
+            <option value="30">EOL in < 30 Days</option>
+            <option value="60">EOL in < 60 Days</option>
+            <option value="90">EOL in < 90 Days</option>
+        </select>
+
+        <select id="securityFilter" class="filter-select" onchange="applyFilters()">
+            <option value="all">All Security Status</option>
+            <option value="vulnerable">Has Vulnerabilities (OSV/NVD)</option>
+            <option value="secure">No Known Issues (Secure)</option>
+        </select>
+
+        <button id="resetFilters" class="expand-btn" style="width: auto; padding: 0 1rem; height: 42px;" onclick="resetFilters()">Reset Filters</button>
+    </div>
+
+    <div class="card">
+        <table id="mainTable">
+            <thead>
+                <tr>
+                    <th width="40"></th>
+                    <th>Product</th>
+                    <th>Installed</th>
+                    <th>Release Date</th>
+                    <th>Latest Stable</th>
+                    <th>Stable Date</th>
+                    <th>Maintenance</th>
+                    <th>OSV (Open Source)</th>
+                    <th>NIST (Official CVE)</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
